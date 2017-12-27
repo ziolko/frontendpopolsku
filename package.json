@@ -5,6 +5,8 @@
   "scripts": {
     "start": "next",
     "test": "npm run build && http-server .out -p 3000",
+    "deploy": "npm run build && gh-pages -d .out -t",
+    "gh": "gh-pages -d .out -t",
     "build": "next build && next export -o .out && nodetouch .out/.nojekyll",
     "analyze": "cross-env ANALYZE=1 next build"
   },
@@ -25,9 +27,10 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^1.4.0",
     "cross-env": "^5.1.3",
+    "gh-pages": "^1.1.0",
     "http-server": "^0.10.0",
-    "touch": "^3.1.0",
     "node-dir": "^0.1.17",
+    "touch": "^3.1.0",
     "webpack-bundle-analyzer": "^2.9.1"
   }
 }
