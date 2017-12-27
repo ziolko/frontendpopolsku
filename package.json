@@ -1,0 +1,33 @@
+{
+  "name": "frontendpopolsku",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "next",
+    "test": "npm run build && http-server .out -p 3000",
+    "build": "next build && next export -o .out && nodetouch .out/.nojekyll",
+    "analyze": "cross-env ANALYZE=1 next build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "dependencies": {
+    "common-tags": "^1.6.0",
+    "jsx-markdown": "^0.3.2",
+    "next": "^4.2.1",
+    "react": "^16.2.0",
+    "react-ace": "^5.8.0",
+    "react-dom": "^16.2.0",
+    "react-swipeable": "^4.2.0",
+    "scope-css": "^1.0.5",
+    "styled-components": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.4.0",
+    "cross-env": "^5.1.3",
+    "http-server": "^0.10.0",
+    "touch": "^3.1.0",
+    "node-dir": "^0.1.17",
+    "webpack-bundle-analyzer": "^2.9.1"
+  }
+}
