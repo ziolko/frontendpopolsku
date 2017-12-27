@@ -26,17 +26,19 @@ const CategoryContent = styled.div`
   }
 `
 
-export default props => (
-  menu.map(category =>
-    <Category key={category.url}>
-      <CategoryHeader>
-        <Link href={category.url}><a>{category.name}</a></Link>
-      </CategoryHeader>
-      <CategoryContent>
-        {category.children && category.children.map(page =>
-          <Link href={page.url} key={page.url}><a>{page.name}</a></Link>
-        )}
-      </CategoryContent>
-    </Category>
-  )
-)
+export default class extends React.PureComponent {
+  render () {
+    return menu.map(category =>
+      <Category key={category.url}>
+        <CategoryHeader>
+          <Link href={category.url}><a>{category.name}</a></Link>
+        </CategoryHeader>
+        <CategoryContent>
+          {category.children && category.children.map(page =>
+            <Link href={page.url} key={page.url}><a>{page.name}</a></Link>
+          )}
+        </CategoryContent>
+      </Category>
+    )
+  }
+}

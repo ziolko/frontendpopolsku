@@ -1,4 +1,5 @@
 import React from 'react'
+import Swipeable from 'react-swipeable'
 import styled, { injectGlobal } from 'styled-components'
 
 import TopBar from './TopBar'
@@ -16,7 +17,7 @@ injectGlobal`
   }
 `
 
-const Container = styled.div`
+const SwipeableWrapper = styled(Swipeable) `
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -53,22 +54,38 @@ const globalState = { isMenuOpen: true }
 export default class Layout extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ...globalState }
+    this.state = { ...globalState, dx: 0 }
   }
 
   render () {
     return (
-      <Container>
-        <SideNavWrapper style={{ left: this.state.isMenuOpen ? 0 : -menuWidth }} >
+      <SwipeableWrapper delta={20} onSwiping={this.onSwiping.bind(this)} onSwiped={this.onSwiped.bind(this)}>
+        <SideNavWrapper style={{ left: this.getMenuRightBorderX() - menuWidth }} >
           <SideNav />
         </SideNavWrapper>
-        <ContentWrapper style={{ marginLeft: this.state.isMenuOpen ? menuWidth : 0 }}>
+        <ContentWrapper style={{ marginLeft: this.getMenuRightBorderX() }}>
           <TopBar onToggleMenuClicked={this.onToggleMenuClicked.bind(this)} />
           <Content>{this.props.children}</Content>
           <ChevronNav />
         </ContentWrapper>
-      </Container>
+      </SwipeableWrapper>
     )
+  }
+
+  getMenuRightBorderX () {
+    const position = (this.state.isMenuOpen ? menuWidth : 0) - this.state.dx
+    return Math.max(0, Math.min(menuWidth, position))
+  }
+
+  onSwiping (event, dx, dy) {
+    if (Math.abs(dx) > Math.abs(dy)) {
+      this.setState({ dx })
+    }
+  }
+
+  onSwiped (event, dx, dy, isFlickr) {
+    globalState.isMenuOpen = this.getMenuRightBorderX() > menuWidth / 2
+    this.setState({ ...globalState, dx: 0 })
   }
 
   onToggleMenuClicked () {

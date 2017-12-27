@@ -59,17 +59,19 @@ const ChevronLink = props => (
 
 const pages = menu.reduce((acc, item) => [...acc, item, ...(item.children || [])], [])
 
-export const ChevronNav = props => {
-  const currentPageIndex = pages.findIndex(page => page.url === props.router.route)
-  const nextPage = pages[currentPageIndex + 1]
-  const previousPage = pages[currentPageIndex - 1]
+class ChevronNav extends React.PureComponent {
+  render () {
+    const currentPageIndex = pages.findIndex(page => page.url === this.props.router.route)
+    const nextPage = pages[currentPageIndex + 1]
+    const previousPage = pages[currentPageIndex - 1]
 
-  return (
-    <ChevronLinks>
-      <ChevronLink href={previousPage && previousPage.url} direction='left' />
-      <ChevronLink href={nextPage && nextPage.url} direction='right' />
-    </ChevronLinks>
-  )
+    return (
+      <ChevronLinks>
+        <ChevronLink href={previousPage && previousPage.url} direction='left' />
+        <ChevronLink href={nextPage && nextPage.url} direction='right' />
+      </ChevronLinks>
+    )
+  }
 }
 
 export default withRouter(ChevronNav)

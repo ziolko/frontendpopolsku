@@ -9,6 +9,5 @@ module.exports = [
       { url: '/position/absolute', name: 'absolutne' }
     ]
   },
-  { url: '/vertical-align', name: 'Vertical-align' },
-  { url: '/vertical-align2', name: 'Vertical-align s' }
+  { url: '/vertical-align', name: 'Vertical-align' }
 ]

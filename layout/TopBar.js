@@ -32,12 +32,16 @@ const TopBarWrapper = styled.nav`
   }
 `
 
-export default props => (
-  <TopBarWrapper>
-    <a href='#' onClick={e => { e.preventDefault(); props.onToggleMenuClicked() }}>
-      <i className='fa fa-bars' aria-hidden='true' />
-    </a>
-    <Link href='/'><a className='page-title'>Frontend po polsku</a></Link>
-    <a href='https://github.com/ziolko/frontendpopolsku'><i className='fa fa-github' aria-hidden='true' /></a>
-  </TopBarWrapper>
-)
+export default class extends React.PureComponent {
+  render () {
+    return (
+      <TopBarWrapper>
+        <a href='#' onClick={e => { e.preventDefault(); this.props.onToggleMenuClicked() }}>
+          <i className='fa fa-bars' aria-hidden='true' />
+        </a>
+        <Link href='/'><a className='page-title'>Frontend po polsku</a></Link>
+        <a href='https://github.com/ziolko/frontendpopolsku'><i className='fa fa-github' aria-hidden='true' /></a>
+      </TopBarWrapper>
+    )
+  }
+}
