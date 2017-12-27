@@ -21,6 +21,7 @@
     "react-dom": "^16.2.0",
     "react-swipeable": "^4.2.0",
     "scope-css": "^1.0.5",
+    "store": "^2.0.12",
     "styled-components": "^2.4.0"
   },
   "devDependencies": {

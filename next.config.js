@@ -26,7 +26,8 @@ module.exports = {
       .map(page => path.posix.format(path.parse(page)))
       .map(page => page.replace('index.js', ''))
       .map(page => page.replace('.js', ''))
+      .reduce((acc, page) => Object.assign(acc, { [page]: { page } }), {})
 
-    return pages.reduce((acc, page) => Object.assign(acc, { [page]: { page } }), {})
+    return Object.assign({ '/404.html': { page: '/_error' } }, pages)
   }
 }
