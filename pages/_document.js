@@ -18,7 +18,6 @@ export default class MyDocument extends Document {
           <meta name='theme-color' content='#000000' />
 
           {this.props.styleTags}
-          <script async defer src='https://buttons.github.io/buttons.js' />
         </Head>
         <body>
           <Main />

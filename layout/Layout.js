@@ -21,15 +21,15 @@ injectGlobal`
 const SwipeableWrapper = styled(Swipeable) `
   width: 100%;
   height: 100%;
-  overflow: hidden;
 `
 
 const SideNavWrapper = styled.nav`
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   background: #f5f5f5;
   padding: 20px;
+  box-sizing: border-box;
   border-right: 1px solid #eee;
   overflow-y: auto;
 
@@ -38,9 +38,6 @@ const SideNavWrapper = styled.nav`
 `
 
 const ContentWrapper = styled.div`
-  height: 100%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
   padding: 0 20px;
   transition: margin-left 0.3s;
 

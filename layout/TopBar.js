@@ -5,7 +5,7 @@ import Link from 'next/link'
 const TopBarWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
+  padding: 10px 0;
 
   a {
     color: #999;
