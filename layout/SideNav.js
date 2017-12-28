@@ -4,6 +4,8 @@ import Router, { withRouter } from 'next/router'
 
 import menu from '../menu'
 
+const navLinkColor = '#9b4dca'
+
 const Category = styled.div`
   margin-bottom: 10px;
 
@@ -26,8 +28,19 @@ const CategoryContent = styled.div`
   }
 `
 const MenuLink = styled.a`
+  color: black;
+
+  &:active {
+    color: ${navLinkColor};
+  }
+  
+  &:hover {
+    color: ${navLinkColor};
+    opacity: 0.7;
+  }
+
   ${props => props.active && `
-    color: black;
+    color: ${navLinkColor};
     font-weight: bold;
   `}
 `
