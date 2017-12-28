@@ -28,7 +28,7 @@ const CategoryContent = styled.div`
 `
 
 const NavLink = props => (
-  <Link href={props.href}>
+  <Link href={props.href} prefetch={props.prefetch}>
     <a className={props.className}>{props.children}</a>
   </Link>
 )
@@ -47,7 +47,7 @@ class SideNav extends React.PureComponent {
     return menu.map(category =>
       <Category key={category.url}>
         <CategoryHeader>
-          <MenuLink href={category.url} active={category.url === currentUrl} children={category.name} />
+          <MenuLink prefetch href={category.url} active={category.url === currentUrl} children={category.name} />
         </CategoryHeader>
         <CategoryContent>
           {category.children && category.children.map(page =>

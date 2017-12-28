@@ -67,8 +67,8 @@ class ChevronNav extends React.PureComponent {
 
     return (
       <ChevronLinks>
-        <ChevronLink href={previousPage && previousPage.url} direction='left' />
-        <ChevronLink href={nextPage && nextPage.url} direction='right' />
+        <ChevronLink prefetch href={previousPage && previousPage.url} direction='left' />
+        <ChevronLink prefetch href={nextPage && nextPage.url} direction='right' />
       </ChevronLinks>
     )
   }
