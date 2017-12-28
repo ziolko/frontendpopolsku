@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import { withRouter } from 'next/router'
 
 import menu from '../menu'
 
@@ -26,19 +27,36 @@ const CategoryContent = styled.div`
   }
 `
 
-export default class extends React.PureComponent {
+const NavLink = props => (
+  <Link href={props.href}>
+    <a className={props.className}>{props.children}</a>
+  </Link>
+)
+
+const MenuLink = styled(NavLink) `
+  ${props => props.active && `
+    color: black;
+    font-weight: bold;
+  `}
+`
+
+class SideNav extends React.PureComponent {
   render () {
+    const currentUrl = this.props.router.route
+
     return menu.map(category =>
       <Category key={category.url}>
         <CategoryHeader>
-          <Link href={category.url}><a>{category.name}</a></Link>
+          <MenuLink href={category.url} active={category.url === currentUrl} children={category.name} />
         </CategoryHeader>
         <CategoryContent>
           {category.children && category.children.map(page =>
-            <Link href={page.url} key={page.url}><a>{page.name}</a></Link>
+            <MenuLink href={page.url} key={page.url} active={page.url === currentUrl} children={page.name} />
           )}
         </CategoryContent>
       </Category>
     )
   }
 }
+
+export default withRouter(SideNav)

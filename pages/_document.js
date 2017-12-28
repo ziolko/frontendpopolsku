@@ -18,12 +18,13 @@ export default class MyDocument extends Document {
           <meta name='theme-color' content='#000000' />
 
           {this.props.styleTags}
+          <script async defer src='https://buttons.github.io/buttons.js' />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-        
+
         <link rel='stylesheet' href='//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css' />
         <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic' />
         <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />

@@ -1,6 +1,7 @@
 import React from 'react'
 import Swipeable from 'react-swipeable'
 import styled, { injectGlobal } from 'styled-components'
+import store from 'store'
 
 import TopBar from './TopBar'
 import SideNav from './SideNav'
@@ -48,22 +49,23 @@ const ContentWrapper = styled.div`
   }
 `
 
-// next doesn't preserve state of Layout component between pages
-const globalState = { isMenuOpen: true }
-
 export default class Layout extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ...globalState, dx: 0 }
+    this.state = { dx: 0, isMenuClosed: false }
+  }
+
+  componentDidMount () {
+    this.syncWithStore()
   }
 
   render () {
     return (
       <SwipeableWrapper delta={20} onSwiping={this.onSwiping.bind(this)} onSwiped={this.onSwiped.bind(this)}>
-        <SideNavWrapper style={{ left: this.getMenuRightBorderX() - menuWidth }} >
+        <SideNavWrapper style={{ left: this.getMenuRightEdgePosition() - menuWidth }} >
           <SideNav />
         </SideNavWrapper>
-        <ContentWrapper style={{ marginLeft: this.getMenuRightBorderX() }}>
+        <ContentWrapper style={{ marginLeft: this.getMenuRightEdgePosition() }}>
           <TopBar onToggleMenuClicked={this.onToggleMenuClicked.bind(this)} />
           <Content>{this.props.children}</Content>
           <ChevronNav />
@@ -72,8 +74,12 @@ export default class Layout extends React.Component {
     )
   }
 
-  getMenuRightBorderX () {
-    const position = (this.state.isMenuOpen ? menuWidth : 0) - this.state.dx
+  syncWithStore () {
+    this.setState({ isMenuClosed: store.get('isMenuClosed') })
+  }
+
+  getMenuRightEdgePosition () {
+    const position = (this.state.isMenuClosed ? 0 : menuWidth) - this.state.dx
     return Math.max(0, Math.min(menuWidth, position))
   }
 
@@ -84,12 +90,13 @@ export default class Layout extends React.Component {
   }
 
   onSwiped (event, dx, dy, isFlickr) {
-    globalState.isMenuOpen = this.getMenuRightBorderX() > menuWidth / 2
-    this.setState({ ...globalState, dx: 0 })
+    store.set('isMenuClosed', this.getMenuRightEdgePosition() < menuWidth / 2)
+    this.setState({ dx: 0 })
+    this.syncWithStore()
   }
 
   onToggleMenuClicked () {
-    globalState.isMenuOpen = !globalState.isMenuOpen
-    this.setState(globalState)
+    store.set('isMenuClosed', !this.state.isMenuClosed)
+    this.syncWithStore()
   }
 }

@@ -8,8 +8,6 @@ const Article = styled.article`
 
 export default class Content extends React.PureComponent {
   render () {
-    return (
-      <Article>{this.props.children}</Article>
-    )
+    return <Article>{this.props.children}</Article>
   }
 }

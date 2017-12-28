@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "next",
-    "test": "npm run build && http-server .out -p 3000",
+    "serve": "npm run build && http-server .out -p 3000",
     "deploy": "npm run build && firebase deploy",
     "build": "next build && next export -o .out",
     "analyze": "cross-env ANALYZE=1 next build"
@@ -16,6 +16,7 @@
     "common-tags": "^1.6.0",
     "jsx-markdown": "^0.3.2",
     "next": "^4.2.1",
+    "object-hash": "^1.2.0",
     "react": "^16.2.0",
     "react-ace": "^5.8.0",
     "react-dom": "^16.2.0",

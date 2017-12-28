@@ -40,7 +40,9 @@ export default class extends React.PureComponent {
           <i className='fa fa-bars' aria-hidden='true' />
         </a>
         <Link href='/'><a className='page-title'>Frontend po polsku</a></Link>
-        <a href='https://github.com/ziolko/frontendpopolsku'><i className='fa fa-github' aria-hidden='true' /></a>
+        <a href='https://github.com/ziolko/frontendpopolsku'>
+          <i className='fa fa-github' aria-hidden='true' /> Github
+        </a>
       </TopBarWrapper>
     )
   }

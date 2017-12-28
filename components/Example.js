@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import styled from 'styled-components'
+import hash from 'object-hash'
 
 import scopeCss from 'scope-css'
 import { stripIndent } from 'common-tags'
@@ -72,7 +73,8 @@ export default class Example extends React.Component {
       options: this.props.options.map(option => stripIndent([option])),
       selectedOptionIndex: 0
     }
-    this.id = `example-${exampleId++}`
+
+    this.id = `example-${hash(this.props.options).substring(0, 10)}`
   }
 
   render () {

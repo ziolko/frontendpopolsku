@@ -17,6 +17,7 @@ export default props => <Ace
   showPrintMargin={false}
   showGutter={false}
   highlightActiveLine={false}
+  editorProps={{ $blockScrolling: true }}
   setOptions={{
     wrap: true,
     maxLines: 30,

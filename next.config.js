@@ -24,8 +24,9 @@ module.exports = {
       .filter(page => !page.includes('_'))
       .map(page => '/' + path.relative(pagesDir, page))
       .map(page => path.posix.format(path.parse(page)))
-      .map(page => page.replace('index.js', ''))
+      .map(page => page.replace('/index.js', ''))
       .map(page => page.replace('.js', ''))
+      .map(page => page || '/')
       .reduce((acc, page) => Object.assign(acc, { [page]: { page } }), {})
 
     return Object.assign({ '/404.html': { page: '/_error' } }, pages)
