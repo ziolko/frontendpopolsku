@@ -14,5 +14,5 @@ export default () =>
       Być może znajdziesz coś interesującego na tych stronach, które ciągle
       istnieją :)
     </p>
-    <Link href='/'><a class='button'>Wróć do strony głównej</a></Link>
+    <Link href='/'><a className='button'>Wróć do strony głównej</a></Link>
   </Wrapper>

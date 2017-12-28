@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
-import { withRouter } from 'next/router'
+import Router, { withRouter } from 'next/router'
 
 import menu from '../menu'
 
@@ -26,14 +25,7 @@ const CategoryContent = styled.div`
     display: block;
   }
 `
-
-const NavLink = props => (
-  <Link href={props.href} prefetch={props.prefetch}>
-    <a className={props.className}>{props.children}</a>
-  </Link>
-)
-
-const MenuLink = styled(NavLink) `
+const MenuLink = styled.a`
   ${props => props.active && `
     color: black;
     font-weight: bold;
@@ -43,19 +35,29 @@ const MenuLink = styled(NavLink) `
 class SideNav extends React.PureComponent {
   render () {
     const currentUrl = this.props.router.route
-
-    return menu.map(category =>
+    const categories = menu.map(category =>
       <Category key={category.url}>
         <CategoryHeader>
-          <MenuLink prefetch href={category.url} active={category.url === currentUrl} children={category.name} />
+          <MenuLink onClick={e => this.onNavigate(e, category.url)} href={category.url} active={category.url === currentUrl} children={category.name} />
         </CategoryHeader>
         <CategoryContent>
           {category.children && category.children.map(page =>
-            <MenuLink href={page.url} key={page.url} active={page.url === currentUrl} children={page.name} />
+            <MenuLink onClick={e => this.onNavigate(e, page.url)} href={page.url} key={page.url} active={page.url === currentUrl} children={page.name} />
           )}
         </CategoryContent>
       </Category>
     )
+
+    return <div className={this.props.className}>{categories}</div>
+  }
+
+  componentDidMount () {
+    menu.forEach(category => Router.prefetch(category.url))
+  }
+
+  onNavigate (event, url) {
+    event.preventDefault()
+    this.props.onNavigate(url)
   }
 }
 
