@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import store from 'store'
 import Head from 'next/head'
-import Router from 'next/router'
 
 import TopBar from './TopBar'
 import SideNav from './SideNav'
@@ -117,6 +116,8 @@ const BodyStyle = props => (
   </style></Head>
 )
 
+
+
 export default class Layout extends React.Component {
   constructor(props) {
     super(props)
@@ -125,11 +126,12 @@ export default class Layout extends React.Component {
 
   componentDidMount () {
     this.syncWithStore()
+    window.scrollTo(0, 0)
   }
 
   render () {
     return (
-      <LayoutWrapper data-toggled={this.state.isMenuToggled} >
+      <LayoutWrapper data-toggled={this.state.isMenuToggled}>
         <BodyStyle isMenuToggled={this.state.isMenuToggled} />
         <SideNav className='layout--side-nav' onNavigate={this.onNavigate.bind(this)} />
         <div className='layout--content'>
@@ -153,6 +155,5 @@ export default class Layout extends React.Component {
 
   onNavigate (url) {
     store.set('isMenuToggled', false)
-    Router.push(url)
   }
 }

@@ -57,6 +57,7 @@ class SideNav extends React.PureComponent {
 
   onNavigate (event, url) {
     event.preventDefault()
+    Router.push(url)
     this.props.onNavigate(url)
   }
 }

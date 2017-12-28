@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { withRouter } from 'next/router'
+import Router, { withRouter } from 'next/router'
 
 import menu from '../menu'
+
+const pages = menu.reduce((acc, item) => [...acc, item, ...(item.children || [])], [])
 
 const ChevronLinks = styled.div`
   display: flex;
@@ -53,17 +55,15 @@ const ChevronLinks = styled.div`
 
 const ChevronLink = props => (
   <div className='chevron-link-wrapper'>
-    {props.href && <Link href={props.href}><i className={`chevron-link fa fa-chevron-${props.direction}`} aria-hidden='true' /></Link>}
+    {props.href && <Link prefetch={props.prefetch} href={props.href}>
+      <i className={`chevron-link fa fa-chevron-${props.direction}`} aria-hidden='true' />
+    </Link>}
   </div>
 )
 
-const pages = menu.reduce((acc, item) => [...acc, item, ...(item.children || [])], [])
-
 class ChevronNav extends React.PureComponent {
   render () {
-    const currentPageIndex = pages.findIndex(page => page.url === this.props.router.route)
-    const nextPage = pages[currentPageIndex + 1]
-    const previousPage = pages[currentPageIndex - 1]
+    const { previousPage, nextPage } = this.getSiblingPages()
 
     return (
       <ChevronLinks>
@@ -71,6 +71,36 @@ class ChevronNav extends React.PureComponent {
         <ChevronLink prefetch href={nextPage && nextPage.url} direction='right' />
       </ChevronLinks>
     )
+  }
+
+  componentDidMount () {
+    this.handler = e => this.onKeyDown(e)
+    document.body.addEventListener('keydown', this.handler)
+  }
+
+  componentWillUnmount () {
+    document.body.removeEventListener('keydown', this.handler)
+  }
+
+  onKeyDown (e) {
+    const { previousPage, nextPage } = this.getSiblingPages()
+
+    const urls = {
+      ArrowLeft: previousPage && previousPage.url,
+      ArrowRight: nextPage && nextPage.url
+    }
+
+    if (urls[e.key]) {
+      Router.push(urls[e.key])
+    }
+  }
+
+  getSiblingPages () {
+    const currentPageIndex = pages.findIndex(page => page.url === this.props.router.route)
+    const nextPage = pages[currentPageIndex + 1]
+    const previousPage = pages[currentPageIndex - 1]
+
+    return { previousPage, nextPage }
   }
 }
 
