@@ -116,8 +116,6 @@ const BodyStyle = props => (
   </style></Head>
 )
 
-
-
 export default class Layout extends React.Component {
   constructor(props) {
     super(props)

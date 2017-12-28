@@ -1,5 +1,5 @@
 module.exports = [
-  { url: '/', name: 'Wstęp' },
+  { url: '/', name: 'Strona domowa' },
   {
     url: '/position',
     name: 'Pozycjonowanie',
