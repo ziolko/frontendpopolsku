@@ -25,6 +25,7 @@ const OptionsWrapper = styled.div`
 `
 
 const OutputWrapper = styled.div`
+  transform: translateX(0);
   overflow: hidden;
   flex: 1000 1 300px;
   margin: 5px;
@@ -57,7 +58,7 @@ const Output = styled.div`
   height: 100%;
   border: 1px solid #ccc;
   background: white;
-  transform: translateX(0);
+  position: relative;
   padding: 10px;
 
   & * {
@@ -90,7 +91,7 @@ export default class Example extends React.Component {
       </OptionsWrapper>
 
       <OutputWrapper id={this.id}>
-        <Output id={this.id}>{this.props.children}</Output>
+        <Output id={this.id} style={this.props.style}>{this.props.children}</Output>
       </OutputWrapper>
 
       <Head>

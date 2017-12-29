@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import store from 'store'
 import Head from 'next/head'
+import Router from 'next/router'
 
 import TopBar from './TopBar'
 import SideNav from './SideNav'
@@ -97,14 +98,6 @@ const LayoutWrapper = styled.div`
 
 const BodyStyle = props => (
   <Head><style>
-    {`
-      html, body {
-        width: 100%;
-        overflow-x: hidden;
-        margin: 0;
-        padding: 0;
-      }
-    `}
     {props.isMenuToggled ? `
       @media (max-width: ${mobileBreak}px) {
         html, body {
