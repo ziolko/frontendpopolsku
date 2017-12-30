@@ -21,6 +21,7 @@ ${<Link href='/normal-flow'><a>normal flow</a></Link>}). Jest to wartość domy�
 dodatkowo przesunąć element w osi pionowej i poziomej przy pomocy właściwości ''left'', 
 ''right'', ''top'' i ''bottom''. Przesunięty element nie będzie 'wypychał' innych elementów, 
 ale zostanie wyświetlony 'ponad' nad nimi (przykryje je).
+
 ${<Example options={[`
   .drugi { 
     position: static; 
@@ -49,6 +50,7 @@ Jeśli nie ustawimy żadnej wartości ''top'', ''left'',
 z tych wartości, to przesunie ona element do brzegów najbliższego 
 ${<Link href='/basics/containing-block'><a>bloku zawierającego</a></Link>} (Szczegóły
 w rozdziale o ${<Link href='/position/absolute'><a>pozycjonowaniu absolutnym</a></Link>}).
+
 ${<Example options={[`
   .drugi {
     position: static;
@@ -73,6 +75,7 @@ ${<Example options={[`
 
 ''position: fixed'' działa podobnie jak ''position: absolute'' ale powoduje, że element pozostaje
 w tym samym miejscu po przewinięciu strony. 
+
 ${<Example style={{ height: 200, overflowY: 'scroll' }} options={[`
   .pierwszy {
     position: absolute;
@@ -93,10 +96,11 @@ ${<Example style={{ height: 200, overflowY: 'scroll' }} options={[`
 
 ##### position: sticky
  
-''position: sticky'' (nie wspierane w ${<a href='https://caniuse.com/#search=sticky'>części przeglądarek</a>}) 
-powoduje, że element zachowuje się jakby miał ustawione ''position: relative'', a po przewinięciu
-strony przełączał się w ''position: fixed''. Pozwala na przykład na uzyskanie efektu tzw. *sticky header* 
-w tabelach.
+''position: sticky'' (nie wspierane w ${<a href='https://caniuse.com/#search=sticky'>części przeglądarek</a>}, 
+więc przykład poniżej może działać u Ciebie nieprawidłowo) powoduje, że element zachowuje się jakby miał 
+ustawione ''position: relative'', a po przewinięciu strony przełączał się w ''position: fixed''. 
+Pozwala na przykład na uzyskanie efektu tzw. *sticky header* w tabelach.
+
 ${<Example options={[`
   .drugi { 
     position: sticky; 

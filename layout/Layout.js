@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import store from 'store'
 import Head from 'next/head'
-import Router from 'next/router'
 
 import TopBar from './TopBar'
 import SideNav from './SideNav'
-import ChevronNav from './ChevronNav'
+import SiblingPagesNav from './SiblingPagesNav'
 import Content from './Content'
+import PageTitle from './PageTitle'
 
 const mobileBreak = 600
 const menuWidth = 250
@@ -96,18 +96,13 @@ const LayoutWrapper = styled.div`
   }
 `
 
-const BodyStyle = props => (
-  <Head><style>
-    {props.isMenuToggled ? `
-      @media (max-width: ${mobileBreak}px) {
-        html, body {
-          height: 100%;
-          overflow-y: hidden;
-        }
-      }
-    ` : null}
-  </style></Head>
-)
+const disableScrollingOnMobile = `
+@media (max-width: ${mobileBreak}px) {
+  html, body {
+    height: 100%;
+    overflow-y: hidden;
+  }
+}`
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -123,12 +118,15 @@ export default class Layout extends React.Component {
   render () {
     return (
       <LayoutWrapper data-toggled={this.state.isMenuToggled}>
-        <BodyStyle isMenuToggled={this.state.isMenuToggled} />
+        <PageTitle />
+        <Head>
+          <style>{this.state.isMenuToggled && disableScrollingOnMobile}</style>
+        </Head>
         <SideNav className='layout--side-nav' onNavigate={this.onNavigate.bind(this)} />
         <div className='layout--content'>
           <TopBar onToggleMenuClicked={this.onToggleMenuClicked.bind(this)} />
           <Content>{this.props.children}</Content>
-          <ChevronNav />
+          <SiblingPagesNav />
         </div>
         <div className='layout--mobile-glass' onClick={this.onToggleMenuClicked.bind(this)} />
       </LayoutWrapper>

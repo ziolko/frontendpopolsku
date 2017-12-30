@@ -2,10 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Router, { withRouter } from 'next/router'
-
-import menu from '../menu'
-
-const pages = menu.reduce((acc, item) => [...acc, item, ...(item.children || [])], [])
+import pages from '../utils/pages'
 
 const ChevronLinks = styled.div`
   display: flex;
@@ -61,7 +58,7 @@ const ChevronLink = props => (
   </div>
 )
 
-class ChevronNav extends React.PureComponent {
+class SiblingPagesNav extends React.PureComponent {
   render () {
     const { previousPage, nextPage } = this.getSiblingPages()
 
@@ -104,4 +101,4 @@ class ChevronNav extends React.PureComponent {
   }
 }
 
-export default withRouter(ChevronNav)
+export default withRouter(SiblingPagesNav)

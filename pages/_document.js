@@ -13,9 +13,10 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Frontend po polsku</title>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta name='theme-color' content='#000000' />
+
+          <link href='/static/favicon.ico' rel='icon' type='image/x-icon' />
 
           {this.props.styleTags}
         </Head>
