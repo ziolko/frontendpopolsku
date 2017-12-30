@@ -28,7 +28,7 @@ const LayoutWrapper = styled.div`
   }
 
   .layout--content {
-    padding: 0 20px;
+    padding: 0 15px;
     transition: margin-left 0.3s;
   }
 

@@ -6,8 +6,8 @@ import chapter from '../../utils/chapter'
 export default () => chapter`
 ### Podstawowe pojęcia
 
-Nie da się sensownie rozmawiać o CSS bez znajomości pewnych podstawowych pojęć zdefiniowanych
-${<a href='https://www.w3.org/TR/CSS22/'>specyfikacji CSS</a>}. Definicje tych najbardziej podstawowych
+Nie da się sensownie rozmawiać o CSS bez znajomości pewnych podstawowych pojęć zdefiniowanych w
+${<a href='https://www.w3.org/TR/CSS22/'>specyfikacji</a>}. Definicje tych najbardziej podstawowych
 przytoczę w kolejnych podrozdziałach.
 
 Czasami wykorzystam pojęcia które omówione zostaną dopiero w dalszej częsci tego podręcznika. 

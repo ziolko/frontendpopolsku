@@ -3,12 +3,12 @@ import Ace from 'react-ace'
 
 import 'brace'
 import 'brace/mode/css'
-import 'brace/theme/textmate'
+import 'brace/theme/xcode'
 import 'brace/ext/language_tools'
 
 export default props => <Ace
   mode='css'
-  theme='textmate'
+  theme='xcode'
   width='100%'
   onFocus={props.onFocus}
   onChange={props.onChange}

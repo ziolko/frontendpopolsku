@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 const Wrapper = styled.main`
   text-align: center;
-  margin-top: 150px;  
+  margin-top: 50px;  
+  padding: 0 20px;
 `
 
 export default () =>

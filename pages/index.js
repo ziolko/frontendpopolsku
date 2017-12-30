@@ -27,8 +27,7 @@ export default () => chapter`
 
   ${<Mobile><Info>
     Najwygodniej będzie Ci przeglądać tę witrynę na komputerze. Samo czytanie na telefonie czy tablecie nie
-    powinno sprawić Ci trudności, ale eksperymentowanie z przykładami jak ten poniżej
-    może być utrudnione.
+    powinno sprawić trudności, ale eksperymentowanie z przykładami jak ten poniżej może być utrudnione.
   </Info></Mobile>}
 
   ${<Example options={[`
@@ -37,18 +36,10 @@ export default () => chapter`
     }
     `, `
     .first-box {
-      /* Kliknij tutaj i zobacz co się stanie */
+    /* Kliknij tutaj i zobacz 
+     * co się stanie 
+     */
       font-size: 30px;
-    }`, `
-    .first-box {
-      background: #aaf;
-      color: white;
-    }
-    .second-box {
-      /* Dodaj tutaj jakiś styl np. 'color: red' */
-    }
-    .third-box {
-      background: #ff5;
     }`
   ]}>
     <Box className='first-box' color='gray'>First box</Box>

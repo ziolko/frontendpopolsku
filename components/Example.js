@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import MediaQuery from 'react-responsive';
 import dynamic from 'next/dynamic'
 import styled from 'styled-components'
 import hash from 'object-hash'
@@ -7,14 +8,15 @@ import hash from 'object-hash'
 import scopeCss from 'scope-css'
 import { stripIndent } from 'common-tags'
 
-const CodeEditor = dynamic(import('./CodeEditor'), { ssr: false })
+import CodeHighlighter from './CodeHighlighter'
+const CodeEditor = dynamic(import('./CodeEditor'), { ssr: false, loading: CodeHighlighter })
 
 const ExampleWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   background: #f4f5f6;
-  padding: 10px;
+  padding: 2px;
   margin-bottom: 20px;
 `
 
@@ -51,6 +53,19 @@ const Option = styled.div`
   .ace_hidden-cursors { 
     opacity:0 
   } 
+
+  pre {
+    margin: 0;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  pre > code {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent;
+    font-size: 14px;
+  }
 `
 
 const Output = styled.div`
@@ -85,7 +100,13 @@ export default class Example extends React.Component {
       <OptionsWrapper>
         {this.state.options.map((option, index) =>
           <Option key={index} active={this.state.selectedOptionIndex === index} >
-            <CodeEditor value={option} onChange={value => this.onValueChanged(index, value)} onFocus={() => this.onOptionFocused(index)} />
+            <MediaQuery minWidth={800}>
+              {
+                isDesktop => isDesktop
+                  ? <CodeEditor value={option} onChange={value => this.onValueChanged(index, value)} onFocus={() => this.onOptionFocused(index)} />
+                  : <CodeHighlighter value={option} onFocus={() => this.onOptionFocused(index)} />
+              }
+            </MediaQuery>
           </Option>
         )}
       </OptionsWrapper>
