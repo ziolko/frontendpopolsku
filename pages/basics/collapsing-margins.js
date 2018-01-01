@@ -83,6 +83,7 @@ ${<Example options={[`
 
 Wartym odnotowania jest fakt, że *block formatting context* blokuje sklejanie się marginesów.
 Możesz to zaobserwować na kolejnym przykładzie.
+
 ${<Example options={[`
   .rodzic {
     margin: 0;
@@ -114,7 +115,44 @@ Jeśli blok jest pusty, nie ma ustawionych właściwości ''border'', ''padding'
 ''height'' ani ''min-height'' (czyli nic, co oddzielałoby od siebie górny i dolny 
 margines), to jego marginesy sklejają się w jeden.
 
-#### Zasady sklejania się marginesów
+#### Wysokość sklejonego marginesu
 
+Kiedy dwa (lub więcej) marginesy sklejają się, wynikowy margines jest równy największemu z nich. 
+Jeśli część marginesów jest ujemna, to od największego z nich odejmowana jest wysokość 
+najmniejszego (najbardziej ujemnego).
+W przypadku, kiedy wszystkie marginesy są ujemne, wynikowy margines jest równy najmniejszemu
+z nich (najbardziej ujemnemu).
+
+${<Example options={[`
+  .rodzic {
+    margin: 10px;
+    background: #afa; /* zielony */
+  }
+  .dziecko {
+    margin: 10px;
+    background: #aaf; /* niebieski */
+  }`, `
+  /* Wynikowy margines górny nie zmieni się */
+  .rodzic {
+    margin: 0;
+    background: #afa; /* zielony */
+  }
+  .dziecko {
+    margin: 10px;
+    background: #aaf; /* niebieski */
+  }`, `
+  /* Wynikowy margines górny będzie równy 0 */
+  .rodzic {
+    margin: -10px;
+    background: #afa; /* zielony */
+  }
+  .dziecko {
+    margin: 10px;
+    background: #aaf; /* niebieski */
+  }`]}>
+    <div className='rodzic'>
+      <div className='dziecko' style={{ padding: 20 }}>Dziecko</div>
+    </div>
+  </Example>}
 
 `

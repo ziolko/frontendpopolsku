@@ -8,7 +8,8 @@ module.exports = [
       { url: '/basics/floats', name: 'Floats' },
       { url: '/basics/collapsing-margins', name: 'Collapsing margins' },
       { url: '/basics/containing-block', name: 'Containing block' },
-      { url: '/basics/vertical-align', name: 'Vertical-align' }
+      { url: '/basics/vertical-align', name: 'Vertical-align' },
+      { url: '/basics/stacking-context', name: 'Stacking context i z-index' }
     ]
   },
   {
