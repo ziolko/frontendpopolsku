@@ -4,7 +4,7 @@ import Link from 'next/link'
 import chapter from '../../utils/chapter'
 
 export default () => chapter`
-### Block formatting context
+### Floats
 
-W specyfikacji CSS rozróżnion
+TODO
 `

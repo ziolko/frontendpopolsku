@@ -20,6 +20,7 @@
     "react": "^16.2.0",
     "react-ace": "^5.8.0",
     "react-dom": "^16.2.0",
+    "react-github-corner": "^2.0.0",
     "react-responsive": "^4.0.3",
     "react-syntax-highlighter": "^6.1.1",
     "scope-css": "^1.0.5",

@@ -6,5 +6,5 @@ import chapter from '../../utils/chapter'
 export default () => chapter`
 ### Containing block
 
-W specyfikacji CSS rozróżnion
+TODO
 `

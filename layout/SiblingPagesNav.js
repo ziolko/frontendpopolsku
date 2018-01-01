@@ -37,13 +37,14 @@ const ChevronLinks = styled.div`
   @media (min-width: 1151px) {
     .chevron-link-wrapper {
       flex-grow: 0;
+      margin: 20px;
     }
 
     .chevron-link {
       position: fixed;
       top: 50px;
       bottom: 50px;
-      width: 40px;
+      width: 60px;
       height: auto;
       transform: translateX(-50%);
     }

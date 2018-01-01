@@ -24,6 +24,10 @@ const OptionsWrapper = styled.div`
   overflow: hidden;
   flex: 1 1 400px;  
   margin: 5px;
+
+  &:empty {
+    display: none;
+  }
 `
 
 const OutputWrapper = styled.div`
@@ -85,12 +89,14 @@ let exampleId = 0
 export default class Example extends React.Component {
   constructor(props) {
     super(props)
+    const options = this.props.options || []
+
     this.state = {
-      options: this.props.options.map(option => stripIndent([option])),
+      options: options.map(option => stripIndent([option])),
       selectedOptionIndex: 0
     }
 
-    this.id = `example-${hash(this.props.options).substring(0, 10)}`
+    this.id = `example-${hash(options).substring(0, 10)}`
   }
 
   render () {

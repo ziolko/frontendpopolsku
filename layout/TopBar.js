@@ -1,12 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import GithubCorner from 'react-github-corner'
 
 const TopBarWrapper = styled.nav`
-  display: flex;
-  justify-content: space-between;
   padding: 10px 0;
 
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .menu-toggler {
+    float: left;
+  }
+
+  .page-title {
+    display: block;
+    text-align: center;
+  }
+  
   a {
     color: #999;
   }
@@ -36,13 +50,11 @@ export default class extends React.PureComponent {
   render () {
     return (
       <TopBarWrapper>
-        <a href='#' onClick={e => { e.preventDefault(); this.props.onToggleMenuClicked() }}>
+        <GithubCorner href='https://github.com/ziolko/frontendpopolsku' bannerColor='#e96f6f' size={50} />
+        <a className='menu-toggler' href='#' onClick={e => { e.preventDefault(); this.props.onToggleMenuClicked() }}>
           <i className='fa fa-bars' aria-hidden='true' />
         </a>
         <Link href='/'><a className='page-title'>Frontend po polsku</a></Link>
-        <a href='https://github.com/ziolko/frontendpopolsku'>
-          <i className='fa fa-github' aria-hidden='true' /> Github
-        </a>
       </TopBarWrapper>
     )
   }

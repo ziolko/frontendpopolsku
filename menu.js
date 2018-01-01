@@ -5,8 +5,10 @@ module.exports = [
     name: 'Podstawy',
     children: [
       { url: '/basics/normal-flow', name: 'Normal flow' },
-      { url: '/basics/block-formatting-context', name: 'Block formatting context' },
-      { url: '/basics/containing-block', name: 'Containing block' }
+      { url: '/basics/floats', name: 'Floats' },
+      { url: '/basics/collapsing-margins', name: 'Collapsing margins' },
+      { url: '/basics/containing-block', name: 'Containing block' },
+      { url: '/basics/vertical-align', name: 'Vertical-align' }
     ]
   },
   {
@@ -17,5 +19,14 @@ module.exports = [
       { url: '/position/fixed', name: 'Position: fixed' }
     ]
   },
-  { url: '/vertical-align', name: 'Vertical-align' }
+  {
+    url: '/flexbox',
+    name: 'Flexbox',
+    children: []
+  },
+  {
+    url: '/layout',
+    name: 'Layout strony',
+    children: []
+  }
 ]

@@ -16,7 +16,7 @@ export default () => chapter`
   </Info>}
 
   Masz przed sobą podręcznik do CSS dla średniozaawansowych. Zakładam, że
-  znasz już podstawy CSS i szukasz porad jak wykorzystać posiadaną wiedzę w praktyce. 
+  znasz już podstawy CSS i chcesz usystematyzować oraz pogłębić swoją wiedzę.
   Jeśli dopiero zaczynasz uczyć się frontendu polecam najpierw zapoznać sie z
   ${<a href='https://the-awwwesomes.gitbooks.io/html-css-step-by-step/content/pl/'>tą stroną</a>}.
 

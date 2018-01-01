@@ -13,7 +13,7 @@ do ustalenia pozycji danego elementu na ekranie.
 
 ##### position: static
 Ustawienie ''position: static'' powoduje, że dany element wyświetlany jest tuż za poprzednim (czyli zgodnie z zasadami
-${<Link href='/normal-flow'><a>normal flow</a></Link>}). Jest to wartość domyślna - jeśli nie ustawisz 
+${<Link href='/basics/normal-flow'><a>normal flow</a></Link>}). Jest to wartość domyślna - jeśli nie ustawisz 
 ''position'' to jego wartość będzie właśnie ''static''.
 
 ##### position: relative
@@ -43,7 +43,7 @@ ${<Example options={[`
 
 ##### position: absolute
   
-''position: absolute'' powoduje, że element wypada z ${<Link href='/normal-flow'><a>normal flow</a></Link>},
+''position: absolute'' powoduje, że element wypada z ${<Link href='/basics/normal-flow'><a>normal flow</a></Link>},
 czyli kolejne elementy na stronie zachowują się tak, jakby go w ogóle nie było.
 Jeśli nie ustawimy żadnej wartości ''top'', ''left'', 
 ''bottom'' ani ''right'' to element nie zmieni swojego dotychczasowego położenia. Jeśli zaś ustawimy którąś
@@ -76,7 +76,7 @@ ${<Example options={[`
 ''position: fixed'' działa podobnie jak ''position: absolute'' ale powoduje, że element pozostaje
 w tym samym miejscu po przewinięciu strony. 
 
-${<Example style={{ height: 200, overflowY: 'scroll' }} options={[`
+${<Example style={{ height: 250, overflowY: 'scroll' }} options={[`
   .pierwszy {
     position: absolute;
     bottom: 0;
@@ -107,13 +107,9 @@ ${<Example options={[`
     top: 10px;
   }`]} style={{ height: 200, overflowY: 'scroll' }}>
   <p>Przewiń zawartość tego elementu, żeby zobaczyć jak działa <code>position: sticky</code>.</p>
-
-  <p>
-    <Box className='pierwszy' color='red'>Pierwszy</Box>
-    <Box className='drugi' size={70} color='blue'>Drugi</Box>
-    <Box className='trzeci' color='red'>Trzeci</Box>
-  </p>
-
+  <Box className='pierwszy' color='red'>Pierwszy</Box>
+  <Box className='drugi' size={70} color='blue'>Drugi</Box>
+  <Box className='trzeci' color='red'>Trzeci</Box>
   <span style={{ display: 'inline-block', marginBottom: 500 }} />
 </Example>}
 `
