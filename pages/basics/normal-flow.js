@@ -75,7 +75,4 @@ znaleźć na stronach
 ${<a href='https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context'>
   Mozilla Developer Network (MDN)
 </a>}.
-
-To tyle teorii. O tym, jak *block formatting context* działa w praktyce
-przekonasz się w kolejnych rozdziałach.
 `

@@ -125,11 +125,11 @@ z nich (najbardziej ujemnemu).
 
 ${<Example options={[`
   .rodzic {
-    margin: 10px;
+    margin: 30px;
     background: #afa; /* zielony */
   }
   .dziecko {
-    margin: 10px;
+    margin: 30px;
     background: #aaf; /* niebieski */
   }`, `
   /* Wynikowy margines górny nie zmieni się */
@@ -138,16 +138,16 @@ ${<Example options={[`
     background: #afa; /* zielony */
   }
   .dziecko {
-    margin: 10px;
+    margin: 30px;
     background: #aaf; /* niebieski */
   }`, `
   /* Wynikowy margines górny będzie równy 0 */
   .rodzic {
-    margin: -10px;
+    margin: -30px;
     background: #afa; /* zielony */
   }
   .dziecko {
-    margin: 10px;
+    margin: 30px;
     background: #aaf; /* niebieski */
   }`]}>
     <div className='rodzic'>
