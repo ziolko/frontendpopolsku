@@ -101,7 +101,7 @@ ${<Example style={{ height: 200 }} options={[`
 
 ##### Position: fixed
 
-Dla elementów z ''position: fixed'' containing block to okno przeglądarki, lub
+Dla elementów z ''position: fixed'' *containing block* to okno przeglądarki, lub
 *padding box* najbliższego przodka, który ma ustawione ''transform'' na wartość inną niż ''none'' 
 lub ''perspective'' na wartość inną niż ''none'' lub ''0''. 
 
