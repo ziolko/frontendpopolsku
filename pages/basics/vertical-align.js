@@ -4,50 +4,39 @@ import Link from 'next/link'
 import chapter from '../../utils/chapter'
 import Example from '../../components/Example'
 import Box from '../../components/Box'
-import {Info} from '../../components/Utils'
+import { Info } from '../../components/Utils'
 
 const TextLine = props => (
-  <div style={{ position: 'absolute', left: 0, right: 0 }}>
-    <span style={{ 
-      display: 'inline-block', 
-      width: '100%', 
-      borderBottom: `1px solid ${props.color}`, 
+  <span style={{ display: 'block', position: 'absolute', left: 0, right: 0 }}>
+    <span style={{
+      display: 'inline-block',
+      width: '100%',
+      borderBottom: `1px solid ${props.color}`,
       verticalAlign: props.verticalAlign
     }} />
-  </div>
+  </span>
 )
 
 const TextLines = props => (
-  <div style={{ marginBottom: 20, fontSize: 60, textAlign: 'center', position: 'relative' }}>
-    {props.baseline && <TextLine color='red' verticalAlign='baseline' />}
-    {props.line && <TextLine color='green' verticalAlign='top' />}
-    {props.line && <TextLine color='green' verticalAlign='bottom' />}
-    {props.text && <TextLine color='blue' verticalAlign='text-top' />}
-    {props.text && <TextLine color='blue' verticalAlign='text-bottom' />}
-    A Ä b q y
+  <div style={{ marginBottom: 20, fontSize: 60, textAlign: 'center', position: 'relative', ...props.style }}>
+    <div style={props.style}>
+      {props.baseline && <TextLine color='red' verticalAlign='baseline' />}
+      {props.line && <TextLine color='green' verticalAlign='top' />}
+      {props.line && <TextLine color='green' verticalAlign='bottom' />}
+      {props.text && <TextLine color='blue' verticalAlign='text-top' />}
+      {props.text && <TextLine color='blue' verticalAlign='text-bottom' />}
+      A Ä b q y
+    </div>
   </div>
 )
 
 export default () => chapter`
 ### Jak działa wyrównanie w pionie
 
-Aby zrozumieć działanie stylu ''vertical-align'' trzeba najpierw nauczyć się nieco o fontach. 
-Każdy font ma tzw **baseline** (po polsku *linia bazowa*, *lina główna*), czyli linię pokrywającą
-się z dolną krawędzią wszystkich dużych liter i małych liter bez wydłużeń dolnych. W przykładach
-na tej stronie *baseline* zaznaczony będzie linią czerwoną.
+Niestety, twórcy CSS niepotrzebnie skomplikowali sprawę stylu ''vertical-align'', bo w 
+zależności od kontekstu działa on na dwa zupełnie różne sposoby.
 
-${<TextLines baseline/>}
-
-Poza *linią główną* każdy font definiuje górną i dolną linię pisma, między którymi
-mieszczą się wszystkie wszystkie znaki fonta. Na tej stronie będą one zaznaczane kolorem niebieskim.
-
-${<TextLines baseline text/>}
-
-Znając te podstawowe pojęcia możemy przystąpić do tłumaczenia działania ''vertical-align''. 
-Niestety, twórcy CSS niepotrzebnie skomplikowali sprawę, bo w zależności od kontekstu ten 
-styl działa na dwa zupełnie różne sposoby.
-
-##### Zastosowanie vertical-align dla komórek tabeli
+#### Działanie vertical-align dla komórek tabeli
 
 Dla elementów z ''display: table-cell'' styl ''vertical-align'' definiuje wyrównanie w 
 pionie zawartości tego elementu. W tym przypadku działa on zgodnie z intuicją, co możesz 
@@ -111,12 +100,12 @@ ${<Example options={[`
     <table style={{ border: '1px solid #ccc', height: 300, marginBottom: 0 }}>
       <tbody>
         <tr>
-          <td className='czerwona' style={{ border: '1px solid #ccc', position: 'relative'  }}>
-            <TextLine color='red' verticalAlign='baseline'/>
+          <td className='czerwona' style={{ border: '1px solid #ccc', position: 'relative' }}>
+            <TextLine color='red' verticalAlign='baseline' />
             Baseline tego tekstu wyrównany jest z baselinem komórki obok.
           </td>
           <td className='niebieska' style={{ border: '1px solid #ccc', position: 'relative' }}>
-            <TextLine color='red' verticalAlign='baseline'/>
+            <TextLine color='red' verticalAlign='baseline' />
             Ta komórka ma ustawiony padding na 100px, więc jej baseline
             również przesuwa się w dół.
           </td>
@@ -126,66 +115,117 @@ ${<Example options={[`
   </Example>}
 
 ${<Info>
-Dla większości znaczników HTML domyślnym ustawieniem jest 
-<code>vertical-align: baseline</code>, którego zachowanie, jak pokazano powyżej, może być nieco zaskakujące. 
-Ustawiając <code>display: table-cell</code> np. elementom typu <code>{'<div>'}</code>, pamiętaj o zmianie 
-<code>vertical-align</code> na jedną z wartości: <code>top</code>, <code>middle</code> lub <code>bottom</code>.
-</Info>}
+    <em>Baseline</em> (po polsku <em>linia bazowa</em> lub <em>lina główna</em>) to linia pokrywającą
+  się z dolną krawędzią wszystkich dużych liter i małych liter bez wydłużeń dolnych. W przykładach
+  na tej stronie <em>baseline</em> zawsze zaznaczony będzie na czerwono.
+  <TextLines baseline />
+  </Info>}
 
+Dla większości znaczników HTML domyślnym ustawieniem jest
+''vertical-align: baseline'', którego zachowanie, jak pokazano powyżej, może być nieco zaskakujące.
+Ustawiając ''display: table-cell'' np. elementom typu ''<div>'', pamiętaj o zmianie
+''vertical-align'' na jedną z wartości: ''top'', ''middle'' lub ''bottom''.
 
-##### Zastosowanie vertical-align dla elementów liniowych
+#### Działanie vertical-align dla elementów liniowych
 
-W przypadku zastosowania stylu ''vertical-align'' do elementów liniowych (np. ''display: inline'',
-czy ''display: inline-block'') intuicję musisz niestety zostawić za drzwiami. W przykładzie poniżej
-w jednej linii znajdują się trzy elementy typu ''<span>''. Pierwszy z nich 
-ma ustawiony ''vertical-align: top'', drugi ''vertical-align: bottom''
-a ustawienie trzeciego możesz kontrolować przy pomocy edytorów po lewej.
-
-Pomimo ustawienia ''vertical-align'' na ''top'' i ''bottom'' wszystkie trzy elementy znajdują się w jednej linii. 
-Po ustawieniu ''vertical-align: middle'' na trzecim elemencie można zauważyć, że pierwszy z nich
-(ten z ''vertical-align: top'') pozostaje niewzruszony, natomiast drugi i trzeci delikatnie 
-przesuwają się w dół. Czy takiego właśnie zachowania się spodziewasz?
-
-${<Example options={[`
-  .przyklad {
-    vertical-align: baseline;
-  }
-  `,`
-  .przyklad {
-    vertical-align: middle;
-  }
-  `]}>
-    <span style={{ verticalAlign: 'top' }}>Top </span>
-    <span style={{ verticalAlign: 'bottom' }}>Bottom </span>
-    <span className='przyklad'>Przykład</span>
-  </Example>}
-
-Do zrozumienia powyższego przykładu musimy przywołać rozdział o 
-${<Link><a href='/basics/normal-flow'>normal flow</a></Link>}. Zdefiniowałem tam
-*inline formatting context* jako obszar, w którym elementy układane są jak pojedyncze 
-słowa - w liniach, jeden za drugim. Kiedy w obecnej linii kończy się miejsce, tworzona jest nowa.
-
-Każda linia ma pewną wysokość. Przy pomocy właściwości ''line-height'' na poziomie elementu
-tworzącego *inline formatting context* (czyli na przykład na poziomie paragrafu lub 
-tagu ''<div>'') można ustawić wysokość pojedynczej linii tekstu w tym elemencie 
-(z tym, że jest to wysokość *minimalna*, czyli linia może być wyższa, co omówię za chwilę). 
+W przykładzie poniżej mamy paragraf (tag ''<p>'') tekstu. Tekst umieszczany jest w liniach. Każda linia
+ma swoją wysokość, oraz *baseline* (*baseline* pierwszej linii zaznaczony został na czerwono). Wysokość
+linii można kontrolować przy pomocy stylu ''line-height'' ustawionego na kontenerze (na tagu ''<p>'').
 
 ${<Example options={[`
   p {
-    line-height: 1.5;
-  }
-  `,`
+    line-height: 25px;
+  }`, `
   p {
-    line-height: 30px;
-  }
-  `,`
-  p {
-    line-height: 10px;
+    line-height: 40px;
   }`]}>
     <p>
-      Cały ten tekst znajduje się w jednym paragrafie. Przy pomocy właściwości
-      <code>line-height</code> ustawionej na tym paragrafie możesz zmienić wysokość 
-      pojedynczej linii.
+      <TextLine color='red' verticalAlign='baseline' />
+      Cały ten tekst znajduje się w jednym paragrafie. Czerwona linia
+      pokazuje baseline pierwszej linijki tekstu. Wysokość
+      linijek możesz kontrolować ustawiając styl line-height na paragrafie.
     </p>
   </Example>}
+
+Cały tekst w przykładzie powyżej używa tego samego kroju i wielkości czcionki. Co powinno się 
+stać, gdyby w środku linijki pojawił się fragment pisany większą czcionką? Są dwie opcje:
+
+- wysokość linijki pozostaje bez zmian i tekst pisany większą czcionką 'nachodzi' na 
+  linijki powyżej i poniżej, albo
+- wysokość linijki zwiększa się tak, żeby pomieścić tekst pisany większą czcionką.
+
+Twórcy CSS zdecydowali się na drugą opcję, co możesz zauważyć w przykładzie poniżej.
+
+${<Example options={[`
+  .niebieski {
+    color: blue;
+    font-size: inherit;
+  }
+  `, `
+  .niebieski {
+    color: blue;
+    font-size: 50px;
+  }
+  `]}>
+    <p>
+      Wielkość czcionki niebieskiego tekstu możesz zmienić, wybierając
+      odpowiedni edytor. Zwróć <span className='niebieski'>uwagę</span> na
+      to, że cała linia zwiększyła swoją wysokość.
+    </p>
+  </Example>}
+
+W powyższym przykładzie należy zauważyć dwie istotne rzeczy:
+- styl ''line-height'' ustawiony na kontenerze oznacza **minimalną** wysokość linii. Może
+być ona większa, jeśli jest taka potrzeba (jak w przykładzie poniżej). Niegdy jednak wielkość
+linii tekstu nie będzie mniejsza niż ''line-height''.
+- zmiana rozmiaru częsci tekstu zaznaczonej na niebiesko spowodowała zmianę pozycji
+reszty tekstu - został on przesunięty w dół.
+
+Domyślnym ustawieniem ''vertical-align'' dla większości elementów HTML jest ''vertical-align: baseline''.
+Kiedy przyjrzymy się przykładowi powyżej, okazuje się, że rzeczywiście *baseline* niebieskiego i czarnego
+tekstu znajduje się w tym samym miejscu. Zwróć uwagę na to, że pozycja *baseline* danej linijki nie jest 
+określona z góry i zależy od jej zawartości (w powyższym przykładzie zmiana rozmiaru czcionki niebieskiego 
+tekstu powoduje przesunięcie *baseline* całej linijki).
+
+Inną dozwoloną wartością ''vertical-align'' jest ''vertical-align: top''. Po ustawieniu tej wartości
+górna granica elementu na którym ją ustawimy zawsze będzie wyrównana do górnej granicy linijki, w której się znajduje.
+Podobnie, ''vertical-align: bottom'' wyrówna dolną granicę elementu do dolnej granicy linijki.
+
+W przykładzie poniżej w jednej linii znajdują się trzy elementy typu ''<span>''. Pierwszy z nich 
+ma ustawiony ''vertical-align: top'', drugi ''vertical-align: bottom'', a trzeci ''vertical-align: baseline''. 
+W tym przykładzie możesz kontrolować wielkość czcionki trzeciego elementu. Zwróć uwagę na to, jak 
+zmienia się ustawienie pozostałych dwóch.
+
+${<Example options={[`
+  .baseline {
+    font-size: inherit;
+  }`, `
+  .baseline {
+    font-size: 20px;
+  }`, `
+  .baseline {
+    font-size: 50px;
+  }`]}>
+    <span style={{ verticalAlign: 'top' }}>Top </span>
+    <span style={{ verticalAlign: 'bottom' }}>Bottom </span>
+    <span className='baseline'>Baseline</span>
+  </Example>}
+
+Przy ''font-size: inherit'' wszystkie trzy elementy znajdują się w jednej linii. Jeśli uważnie 
+przestudiujesz ten przykład to dojdziesz do wniosku, że:
+- górna granica elementu z ''vertical-align: top'' jest wyrównana do górnej granicy linijki,
+- dolna granica elementu z ''vertical-align: bottom'' jest wyrównana do dolnej granicy linijki,
+- *baseline* elementu z ''vertical-align: baseline'' jest wyrównany z *baseline* linijki.
+
+Po zwiększeniu rozmiaru czcionki trzeciego elementu, dolna granica linijki oraz *baseline* przesuwają
+się w dół, co wymusza zmianę położenia innych elementów w tej samej linii.
+
+${<Info>
+  Uwaga: styl <code>vertical-align</code> ustawiamy na elemencie, którego wyrównanie
+  chcemy zmienić, a nie na kontenerze (jak <code>{'<p>'}</code>, czy <code>{'<div>'}</code>),
+  w którym ten element się znajduje. Zwróć uwagę na to, że w sekcji
+  <em> Jak działa vertical-align dla komórek tabeli</em> było odwrotnie - ustawialiśmy <code>vertical-align</code>
+  na komórce tabeli (kontenerze). To zamieszanie wynika z faktu, że działanie <code>vertical-align</code> w obu tych
+  przypadkach jest zupełnie odmienne i tak właściwie powinny być to dwa style o różnej nazwie.
+</Info>}
 `
