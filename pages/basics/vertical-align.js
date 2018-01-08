@@ -176,7 +176,7 @@ ${<Example options={[`
 
 W powyższym przykładzie należy zauważyć dwie istotne rzeczy:
 - styl ''line-height'' ustawiony na kontenerze oznacza **minimalną** wysokość linii. Może
-być ona większa, jeśli jest taka potrzeba (jak w przykładzie poniżej). Niegdy jednak wielkość
+być ona większa, jeśli jest taka potrzeba (jak w przykładzie poniżej). Nigdy jednak wielkość
 linii tekstu nie będzie mniejsza niż ''line-height''.
 - zmiana rozmiaru częsci tekstu zaznaczonej na niebiesko spowodowała zmianę pozycji
 reszty tekstu - został on przesunięty w dół.

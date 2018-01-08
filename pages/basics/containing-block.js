@@ -14,7 +14,7 @@ wartości stylów związanych z layoutem strony:
   ''left'', ''right'', ''top'' lub ''bottom'', to ich wartość wyliczona będzie na podstawie 
   wysokości lub szerokości bloku zawierającego.
 - Dla elementów z ''position: fixed'' oraz ''position: absolute'' wartości ''left'', ''right'',
-  ''top'' i ''bottom'' oznaczają przesunięcie od krawędzie *padding box* elementu zawierającego.
+  ''top'' i ''bottom'' oznaczają przesunięcie od krawędzi *padding box* elementu zawierającego.
 
 Sposób ustalania bloku zawierającego zależy od wartości stylu ''position'' zgodnie z 
 zasadami opisanymi poniżej.
