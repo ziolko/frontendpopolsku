@@ -31,13 +31,13 @@ ${<Example options={[`
     <div className='niebieski' style={{ background: '#ddddff', padding: 20 }}>Niebieski paragraf</div>
   </Example>}
 
-Marginesy sklejają się sytuacjach opisanych poniżej. Zwróć uwagę na to, że 
+Marginesy sklejają się w sytuacjach opisanych poniżej. Zwróć uwagę na to, że 
 marginesy poziome (lewy i prawy) **nigdy** się nie sklejają.
 
-##### Przelegające do siebie kolejne elementy (rodzeństwo)
+##### Przylegające do siebie kolejne elementy (rodzeństwo)
 Marginesy pionowe dwóch przylegających do siebie elementów będących rodzeństwem 
 w drzewie DOM sklejają się w jeden. Tak stało się w powyższym przykładzie z 
-*czerwonyn* i *niebieskim* paragrafem.
+*czerwonym* i *niebieskim* paragrafem.
 
 ##### Rodzic i pierwsze/ostatnie dziecko
 Margines górny rodzica i pierwszego dziecka sklejają się, jeśli nie rozdziela

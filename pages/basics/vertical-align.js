@@ -36,7 +36,7 @@ export default () => chapter`
 Niestety, twórcy CSS niepotrzebnie skomplikowali sprawę stylu ''vertical-align'', bo w 
 zależności od kontekstu działa on na dwa zupełnie różne sposoby.
 
-#### Działanie vertical-align dla komórek tabeli
+${<h4 id='table-cell'>Działanie vertical-align dla komórek tabeli</h4>}
 
 Dla elementów z ''display: table-cell'' styl ''vertical-align'' definiuje wyrównanie w 
 pionie zawartości tego elementu. W tym przypadku działa on zgodnie z intuicją, co możesz 
@@ -116,7 +116,7 @@ ${<Example options={[`
 
 ${<Info>
     <em>Baseline</em> (po polsku <em>linia bazowa</em> lub <em>lina główna</em>) to linia pokrywającą
-  się z dolną krawędzią wszystkich dużych liter i małych liter bez wydłużeń dolnych. W przykładach
+  się z dolną krawędzią wszystkich dużych i małych liter bez wydłużeń dolnych. W przykładach
   na tej stronie <em>baseline</em> zawsze zaznaczony będzie na czerwono.
   <TextLines baseline />
   </Info>}
@@ -178,7 +178,7 @@ W powyższym przykładzie należy zauważyć dwie istotne rzeczy:
 - styl ''line-height'' ustawiony na kontenerze oznacza **minimalną** wysokość linii. Może
 być ona większa, jeśli jest taka potrzeba (jak w przykładzie powyżej). Nigdy jednak wielkość
 linii tekstu nie będzie mniejsza niż ''line-height''.
-- zmiana rozmiaru częsci tekstu zaznaczonej na niebiesko spowodowała zmianę pozycji
+- zmiana rozmiaru części tekstu zaznaczonej na niebiesko spowodowała zmianę pozycji
 reszty tekstu - został on przesunięty w dół.
 
 Domyślnym ustawieniem ''vertical-align'' dla większości elementów HTML jest ''vertical-align: baseline''.
@@ -242,7 +242,7 @@ ${<Info>
     Uwaga: styl <code>vertical-align</code> ustawiamy na elemencie, którego wyrównanie
   chcemy zmienić, a nie na kontenerze (jak <code>{'<p>'}</code>, czy <code>{'<div>'}</code>),
   w którym ten element się znajduje. Zwróć uwagę na to, że w sekcji
-  <em> Jak działa vertical-align dla komórek tabeli</em> było odwrotnie - ustawialiśmy <code>vertical-align</code>
+  <a href='#table-cell'> Jak działa vertical-align dla komórek tabeli</a> było odwrotnie - ustawialiśmy <code>vertical-align</code>
     na komórce tabeli (kontenerze). To zamieszanie wynika z faktu, że działanie <code>vertical-align</code> w obu tych
   przypadkach jest zupełnie odmienne i tak właściwie powinny być to dwa style o różnej nazwie.
 </Info>}

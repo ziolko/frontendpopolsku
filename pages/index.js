@@ -47,6 +47,6 @@ export default () => chapter`
     <Box className='third-box' color='gray'>Third box</Box>
   </Example>}
 
-  Jeśli masz potrzebę skontaktowania się z autorem tej strony, znajdziesz mnie pod adresem
-  ${<a href='mailto:mateusz.mzielinski@gmail.com'>mateusz.mzielinski@gmail.com</a>}.
+  W razie potrzeby możesz mnie złapać przez
+  ${<a href='mailto:mateusz.mzielinski@gmail.com'>maila</a>}.
 `

@@ -20,7 +20,7 @@ ${<Link href='/basics/normal-flow'><a>normal flow</a></Link>}). Jest to wartoś�
 ''position: relative'' zachowuje się podobnie jak ''position: static'', ale pozwala 
 dodatkowo przesunąć element w osi pionowej i poziomej przy pomocy właściwości ''left'', 
 ''right'', ''top'' i ''bottom''. Przesunięty element nie będzie 'wypychał' innych elementów, 
-ale zostanie wyświetlony 'ponad' nad nimi (przykryje je).
+ale zostanie wyświetlony 'ponad' nimi (przykryje je).
 
 ${<Example options={[`
   .drugi { 

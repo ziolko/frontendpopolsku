@@ -79,10 +79,6 @@ const Output = styled.div`
   background: white;
   position: relative;
   padding: 10px;
-
-  & * {
-    transition: all 0.1s;
-  }
 `
 
 let exampleId = 0

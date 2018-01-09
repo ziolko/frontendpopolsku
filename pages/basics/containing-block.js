@@ -35,24 +35,27 @@ niebieskiego.
 
 ${<Example options={[`
   .zielony {
+    padding: 10px;
     background: #afa; /* zielony */
   }
   .niebieski {
+    padding: 10px;
     display: inline-block;
     background: #aaf; /* niebieski */
     width: 50%; 
     /* 50% z content box zielonego  */
   }
   .czerwony {
+    padding: 10px;
     background: #faa; /* czerwony */
     width: 50%; 
     /* 50% z content box niebieskiego */
   }`]}>
-    <div className='zielony' style={{ padding: 10 }}>
+    <div className='zielony'>
       Zielony
-      <div className='niebieski' style={{ padding: 10 }}>
+      <div className='niebieski'>
         Niebieski
-        <div className='czerwony' style={{ padding: 10 }}>Czerwony</div>
+        <div className='czerwony'>Czerwony</div>
       </div>
     </div>
   </Example>}
