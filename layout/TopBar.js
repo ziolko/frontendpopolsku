@@ -14,11 +14,14 @@ const TopBarWrapper = styled.nav`
 
   .menu-toggler {
     float: left;
+    width: 30px;
   }
 
   .page-title {
     display: block;
     text-align: center;
+    width: 250px;
+    margin: auto;
   }
   
   a {
