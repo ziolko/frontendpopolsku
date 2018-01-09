@@ -176,7 +176,7 @@ ${<Example options={[`
 
 W powyższym przykładzie należy zauważyć dwie istotne rzeczy:
 - styl ''line-height'' ustawiony na kontenerze oznacza **minimalną** wysokość linii. Może
-być ona większa, jeśli jest taka potrzeba (jak w przykładzie poniżej). Nigdy jednak wielkość
+być ona większa, jeśli jest taka potrzeba (jak w przykładzie powyżej). Nigdy jednak wielkość
 linii tekstu nie będzie mniejsza niż ''line-height''.
 - zmiana rozmiaru częsci tekstu zaznaczonej na niebiesko spowodowała zmianę pozycji
 reszty tekstu - został on przesunięty w dół.
@@ -186,6 +186,24 @@ Kiedy przyjrzymy się przykładowi powyżej, okazuje się, że rzeczywiście *ba
 tekstu znajduje się w tym samym miejscu. Zwróć uwagę na to, że pozycja *baseline* danej linijki nie jest 
 określona z góry i zależy od jej zawartości (w powyższym przykładzie zmiana rozmiaru czcionki niebieskiego 
 tekstu powoduje przesunięcie *baseline* całej linijki).
+
+Jeśli dany element nie ma *baseline* (na przykład obrazek) i ma ustawione ''vertical-align: baseline'',
+to dolna granica jego marginesu zostanie wyrównana do *baseline* linijki. Przykład takiego zachowania
+znajdziesz poniżej.
+
+${<Example options={[`
+  img {
+    vertical-align: baseline;
+    height: 20px;
+  }`, `
+  img {
+    vertical-align: baseline;
+    height: 10px;
+  }`]}>
+    <img src='/static/favicon.ico' /> Tekst z <code>vertical-align: baseline</code>
+  </Example>}
+
+##### vertical-align: top oraz bottom
 
 Inną dozwoloną wartością ''vertical-align'' jest ''vertical-align: top''. Po ustawieniu tej wartości
 górna granica elementu na którym ją ustawimy zawsze będzie wyrównana do górnej granicy linijki, w której się znajduje.
@@ -221,11 +239,41 @@ Po zwiększeniu rozmiaru czcionki trzeciego elementu, dolna granica linijki oraz
 się w dół, co wymusza zmianę położenia innych elementów w tej samej linii.
 
 ${<Info>
-  Uwaga: styl <code>vertical-align</code> ustawiamy na elemencie, którego wyrównanie
+    Uwaga: styl <code>vertical-align</code> ustawiamy na elemencie, którego wyrównanie
   chcemy zmienić, a nie na kontenerze (jak <code>{'<p>'}</code>, czy <code>{'<div>'}</code>),
   w którym ten element się znajduje. Zwróć uwagę na to, że w sekcji
   <em> Jak działa vertical-align dla komórek tabeli</em> było odwrotnie - ustawialiśmy <code>vertical-align</code>
-  na komórce tabeli (kontenerze). To zamieszanie wynika z faktu, że działanie <code>vertical-align</code> w obu tych
+    na komórce tabeli (kontenerze). To zamieszanie wynika z faktu, że działanie <code>vertical-align</code> w obu tych
   przypadkach jest zupełnie odmienne i tak właściwie powinny być to dwa style o różnej nazwie.
 </Info>}
+
+##### vertical-align: middle
+
+Ciekawy jest sposób działania ''vertical-align: middle''. Ustawienie takiego stylu na elemencie powoduje 
+wyrównanie jego środka ze środkiem małego znaku *x* czcionki ustawionej na kontenerze, w którym znajduje 
+się ten element. Możesz sprawdzić to w 
+${<a href='https://www.w3.org/TR/CSS22/visudet.html#propdef-vertical-align'>specyfikacji CSS</a>} oraz 
+w przykładzie poniżej.
+
+${<Example options={[`
+  .kontener {
+    font-size: 20px;
+    background: #eee;
+  }
+  .box {
+    vertical-align: middle
+  }`, `
+  .kontener {
+    font-size: 60px;
+    background: #eee;
+  }
+  .box {
+    vertical-align: middle
+  }`]}>
+    <p class='kontener'>
+      <span>x </span>
+      <span className='box' style={{ display: 'inline-block', background: 'red', width: 20, height: 20 }} />
+      <span> Zwróć uwagę, że środek czerwonego pudełka jest wyrównany do połowy wysokości małego znaku x.</span>
+    </p>
+  </Example>}
 `
