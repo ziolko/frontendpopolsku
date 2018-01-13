@@ -10,7 +10,7 @@ module.exports = [
       { url: '/basics/position', name: 'Position' },
       { url: '/basics/containing-block', name: 'Containing block' },
       { url: '/basics/vertical-align', name: 'Vertical-align' },
-      // { url: '/basics/stacking-context', name: 'Stacking context' },
+      { url: '/basics/stacking-context', name: 'Stacking context' },
     ]
   },
   {
